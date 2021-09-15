@@ -5,13 +5,15 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import LandingScreen from '../screens/LandingScreen';
 
 const Drawer = createDrawerNavigator();
 
 function Navigation() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Navigator initialRouteName="Landing">
+        <Drawer.Screen options={{headerShown: false}} name="Landing" component={LandingScreen} />
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Profile" component={ProfileScreen} />
       </Drawer.Navigator>
