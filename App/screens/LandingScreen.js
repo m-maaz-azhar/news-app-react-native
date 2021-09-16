@@ -8,20 +8,22 @@ function LandingScreen({navigation}) {
       source={require('../assets/bg.jpg')}
       resizeMode="cover"
       style={styles.container}>
-      <Image
-        source={require('../assets/logo.png')}
-        style={{width: 180, height: 180}}
-      />
-      <Heading
-        alignSelf={{
-          base: 'center',
-          md: 'flex-start',
-        }}
-        mb={5}
-        size="lg">
-        APP NAME
-      </Heading>
-      <Box p={5} bg="gray.100" rounded="lg">
+      <Box>
+        <Image
+          source={require('../assets/logo.png')}
+          style={{width: 180, height: 180}}
+        />
+        <Heading
+          alignSelf={{
+            base: 'center',
+            md: 'flex-start',
+          }}
+          mb={5}
+          size="lg">
+          APP NAME
+        </Heading>
+      </Box>
+      <Box p={5} style={{width: '100%',flex:0.6,borderTopLeftRadius:30,borderTopRightRadius:30}} bg="white">
         <Heading
           alignSelf={{
             base: 'center',
@@ -31,13 +33,13 @@ function LandingScreen({navigation}) {
           Welcome
         </Heading>
 
-        <Text mb={5} mt={2}>
+        <Text mb={5} mt={2} alignSelf={'center'}>
           Discover Amazing Things Around You.
         </Text>
 
         <Button
           my={3}
-          size="sm"
+          size="md"
           variant={'solid'}
           borderRadius={10}
           colorScheme="emerald">
@@ -45,16 +47,20 @@ function LandingScreen({navigation}) {
         </Button>
 
         <Button
-          size="sm"
+          size="md"
           variant={'outline'}
           borderRadius={10}
           colorScheme="emerald">
           Sign Up
         </Button>
-        <Divider my={2} />
-        <Text alignSelf={'center'} color={'gray.700'}>
-          Terms and Conditions apply
-        </Text>
+        <Divider my={4} />
+        <Button
+          size="md"
+          variant={'solid'}
+          borderRadius={10}
+          colorScheme="blue">
+          Continue With Facebook
+        </Button>
       </Box>
     </ImageBackground>
   );
@@ -63,7 +69,7 @@ function LandingScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
 });
