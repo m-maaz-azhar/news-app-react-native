@@ -8,7 +8,7 @@ function LandingScreen({navigation}) {
       source={require('../assets/bg.jpg')}
       resizeMode="cover"
       style={styles.container}>
-      <Box>
+      <Box style={{justifyContent: 'center', alignItems: 'center', flex: 1.3}}>
         <Image
           source={require('../assets/logo.png')}
           style={{width: 180, height: 180}}
@@ -19,11 +19,19 @@ function LandingScreen({navigation}) {
             md: 'flex-start',
           }}
           mb={5}
-          size="lg">
+          size="xl">
           APP NAME
         </Heading>
       </Box>
-      <Box p={5} style={{width: '100%',flex:0.6,borderTopLeftRadius:30,borderTopRightRadius:30}} bg="white">
+      <Box
+        p={5}
+        style={{
+          width: '100%',
+          flex: 1,
+          borderTopLeftRadius: 30,
+          borderTopRightRadius: 30,
+        }}
+        bg="white">
         <Heading
           alignSelf={{
             base: 'center',
@@ -38,6 +46,7 @@ function LandingScreen({navigation}) {
         </Text>
 
         <Button
+         onPress={() => navigation.navigate('Sign In')}
           my={3}
           size="md"
           variant={'solid'}
@@ -47,13 +56,14 @@ function LandingScreen({navigation}) {
         </Button>
 
         <Button
+          onPress={() => navigation.navigate('Sign Up')}
           size="md"
           variant={'outline'}
           borderRadius={10}
           colorScheme="emerald">
           Sign Up
         </Button>
-        <Divider my={4} />
+        <Divider my={5} />
         <Button
           size="md"
           variant={'solid'}

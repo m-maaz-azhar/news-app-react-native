@@ -12,11 +12,11 @@ function App() {
   }, []);
 
   return (
-    <NativeBaseProvider>
-      <View style={{flex: 1}}>
-        <Navigation />
-      </View>
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <NativeBaseProvider>
+          <Navigation />
+      </NativeBaseProvider>
+    </NavigationContainer>
   );
 }
 
