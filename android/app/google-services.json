@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "215167062203",
+    "project_id": "react-native-hackathon-saim",
+    "storage_bucket": "react-native-hackathon-saim.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215167062203:android:cc8847b04f42c20253599e",
+        "android_client_info": {
+          "package_name": "com.basic_app_react_native"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215167062203-msupn1qi51t709tle36cs0updokt3qkt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTLE8SVC-G5-J3KZ40Xpes1t2QN2AIOfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215167062203-msupn1qi51t709tle36cs0updokt3qkt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

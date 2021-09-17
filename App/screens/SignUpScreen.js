@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
   Container,
   Text,
@@ -13,8 +13,33 @@ import {
 import {ImageBackground, StyleSheet} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import auth from '@react-native-firebase/auth';
 
 function SignUpScreen({navigation}) {
+
+  const [username, setusername] = useState("")
+  const [email, setemail] = useState("")
+  const [password, setpassword] = useState("")
+
+  const login = ()=>{
+    auth()
+  .createUserWithEmailAndPassword(email, password)
+  .then(() => {
+    navigation.navigate('Home')
+  })
+  .catch(error => {
+    if (error.code === 'auth/email-already-in-use') {
+      console.log('That email address is already in use!');
+    }
+
+    if (error.code === 'auth/invalid-email') {
+      console.log('That email address is invalid!');
+    }
+
+    console.error(error);
+  });
+  }
+
   return (
     <ImageBackground
       source={require('../assets/bg.jpg')}
@@ -29,6 +54,7 @@ function SignUpScreen({navigation}) {
           </Box>
 
           <Input
+            onChangeText={(text)=>setusername(text)}
             my={2}
             InputLeftElement={
               <Icon
@@ -53,6 +79,7 @@ function SignUpScreen({navigation}) {
           />
 
           <Input
+            onChangeText={(text)=>setemail(text)}
             my={2}
             InputLeftElement={
               <Icon
@@ -77,6 +104,7 @@ function SignUpScreen({navigation}) {
           />
 
           <Input
+            onChangeText={(text)=>setpassword(text)}
             my={2}
             InputLeftElement={
               <Icon
@@ -100,7 +128,7 @@ function SignUpScreen({navigation}) {
             }}
           />
 
-          <Button my={3} size="md" colorScheme="emerald" width="90%">
+          <Button onPress={()=>login()} my={3} size="md" colorScheme="emerald" width="90%">
             SIGN UP
           </Button>
           <Divider my={2}/>
