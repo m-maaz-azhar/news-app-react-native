@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">basic_app_react_native</string>
+    <string name="facebook_app_id">279325224028535</string>
+    <string name="facebook_client_token">ed84c7f18ab3981bfdb5d6c5263282bc</string>
 </resources>
