@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import {
   Container,
   Text,
@@ -13,31 +13,38 @@ import {
 import {ImageBackground, TouchableOpacity, StyleSheet} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 
 function SignUpScreen({navigation}) {
+  const [name, setname] = useState('');
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
 
-  const [username, setusername] = useState("")
-  const [email, setemail] = useState("")
-  const [password, setpassword] = useState("")
-
-  const attemptSignUp = ()=>{
+  const attemptSignUp = () => {
     auth()
-  .createUserWithEmailAndPassword(email, password)
-  .then(() => {
-    navigation.navigate('AppScreen')
-  })
-  .catch(error => {
-    if (error.code === 'auth/email-already-in-use') {
-      console.log('That email address is already in use!');
-    }
+      .createUserWithEmailAndPassword(email, password)
+      .then(({user}) => {
+        console.log('ID CREATED');
+        database()
+          .ref(`/users/${user.uid}`)
+          .set({
+            name,
+            email,
+          })
+          .then(() => console.log('Data set.'));
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
 
-    if (error.code === 'auth/invalid-email') {
-      console.log('That email address is invalid!');
-    }
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
 
-    console.error(error);
-  });
-  }
+        console.error(error);
+      });
+  };
 
   return (
     <ImageBackground
@@ -53,7 +60,7 @@ function SignUpScreen({navigation}) {
           </Box>
 
           <Input
-            onChangeText={(text)=>setusername(text)}
+            onChangeText={text => setname(text)}
             my={2}
             InputLeftElement={
               <Icon
@@ -78,7 +85,7 @@ function SignUpScreen({navigation}) {
           />
 
           <Input
-            onChangeText={(text)=>setemail(text)}
+            onChangeText={text => setemail(text)}
             my={2}
             InputLeftElement={
               <Icon
@@ -103,7 +110,7 @@ function SignUpScreen({navigation}) {
           />
 
           <Input
-            onChangeText={(text)=>setpassword(text)}
+            onChangeText={text => setpassword(text)}
             my={2}
             InputLeftElement={
               <Icon
@@ -127,15 +134,19 @@ function SignUpScreen({navigation}) {
             }}
           />
 
-          <Button onPress={()=>attemptSignUp()} my={3} size="md" colorScheme="emerald" width="90%">
+          <Button
+            onPress={() => attemptSignUp()}
+            my={3}
+            size="md"
+            colorScheme="emerald"
+            width="90%">
             SIGN UP
           </Button>
-          <Divider my={2}/>
+          <Divider my={2} />
 
-          <TouchableOpacity onPress={()=>navigation.navigate('Sign In')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Sign In')}>
             <Text py={1}>Already Have An Account?</Text>
           </TouchableOpacity>
-
         </Center>
       </Box>
     </ImageBackground>

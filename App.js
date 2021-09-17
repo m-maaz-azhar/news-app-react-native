@@ -3,7 +3,7 @@ import SplashScreen from 'react-native-splash-screen';
 import {View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 
-import MainNavigation from './App/config/Navigation';
+import Navigation from './App/config/Navigation';
 import {NativeBaseProvider} from 'native-base';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
   return (
     <NavigationContainer>
       <NativeBaseProvider>
-          <MainNavigation />
+          <Navigation />
       </NativeBaseProvider>
     </NavigationContainer>
   );

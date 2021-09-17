@@ -16,23 +16,19 @@ import auth from '@react-native-firebase/auth';
 
 function SignInScreen({navigation}) {
   const [show, setShow] = useState(false);
-  const [email, setemail] = useState("")
-  const [password, setpassword] = useState("")
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
 
   const attemptSignIn = () => {
     auth()
-      .signInWithEmailAndPassword(
-        email,
-        password,
-      )
-      .then(() => {
-        navigation.navigate('AppScreen')
+      .signInWithEmailAndPassword(email, password)
+      .then((res) => {
+        console.log('Sign In Done',res);
       })
       .catch(error => {
         if (error.code === 'auth/invalid-email') {
           console.log('That email address is invalid!');
         }
-
         console.error(error);
       });
   };
@@ -50,7 +46,7 @@ function SignInScreen({navigation}) {
             </Heading>
           </Box>
           <Input
-            onChangeText={(text)=>setemail(text)}
+            onChangeText={text => setemail(text)}
             my={2}
             InputLeftElement={
               <Icon
@@ -75,7 +71,7 @@ function SignInScreen({navigation}) {
           />
 
           <Input
-           onChangeText={(text)=>setpassword(text)}
+            onChangeText={text => setpassword(text)}
             my={2}
             InputLeftElement={
               <Icon
@@ -110,7 +106,12 @@ function SignInScreen({navigation}) {
             }}
           />
 
-          <Button onPress={()=>attemptSignIn()} my={3} size="md" colorScheme="emerald" width="90%">
+          <Button
+            onPress={() => attemptSignIn()}
+            my={3}
+            size="md"
+            colorScheme="emerald"
+            width="90%">
             SIGN IN
           </Button>
           <Divider my={2} />

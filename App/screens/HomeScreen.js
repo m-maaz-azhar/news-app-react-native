@@ -6,7 +6,7 @@ function HomeScreen({navigation}) {
   const signOut = () => {
     auth()
       .signOut()
-      .then(() => console.log('User signed out!'));
+      .then(() => console.log('Sign Out')/*navigation.navigate('Landing')*/);
   };
 
   return (
