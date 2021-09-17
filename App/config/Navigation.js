@@ -7,6 +7,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import LandingScreen from '../screens/LandingScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
+import ForgetPasswordScreen from '../screens/ForgetPasswordScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -36,6 +37,14 @@ function Navigation() {
         }}
         name="Sign Up"
         component={SignUpScreen}
+      />
+       <Drawer.Screen
+        options={{
+          headerShown: false,
+          swipeEnabled: false,
+        }}
+        name="Forget Password"
+        component={ForgetPasswordScreen}
       />
       <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="Profile" component={ProfileScreen} />

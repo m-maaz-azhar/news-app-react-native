@@ -93,7 +93,7 @@ function SignInScreen({navigation}) {
           </Button>
           <Divider my={2} />
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate('Forget Password')}>
             <Text py={1}>Forget Your Password?</Text>
           </TouchableOpacity>
 
