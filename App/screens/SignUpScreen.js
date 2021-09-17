@@ -20,7 +20,7 @@ function SignUpScreen({navigation}) {
   const [email, setemail] = useState("")
   const [password, setpassword] = useState("")
 
-  const login = ()=>{
+  const attemptSignUp = ()=>{
     auth()
   .createUserWithEmailAndPassword(email, password)
   .then(() => {
@@ -127,7 +127,7 @@ function SignUpScreen({navigation}) {
             }}
           />
 
-          <Button onPress={()=>login()} my={3} size="md" colorScheme="emerald" width="90%">
+          <Button onPress={()=>attemptSignUp()} my={3} size="md" colorScheme="emerald" width="90%">
             SIGN UP
           </Button>
           <Divider my={2}/>

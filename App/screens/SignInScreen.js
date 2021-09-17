@@ -10,11 +10,32 @@ import {
   Icon,
   Divider,
 } from 'native-base';
-import {ImageBackground, StyleSheet,TouchableOpacity} from 'react-native';
+import {ImageBackground, StyleSheet, TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import auth from '@react-native-firebase/auth';
 
 function SignInScreen({navigation}) {
   const [show, setShow] = useState(false);
+  const [email, setemail] = useState("")
+  const [password, setpassword] = useState("")
+
+  const attemptSignIn = () => {
+    auth()
+      .signInWithEmailAndPassword(
+        email,
+        password,
+      )
+      .then(() => {
+        navigation.navigate('AppScreen')
+      })
+      .catch(error => {
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+
+        console.error(error);
+      });
+  };
 
   return (
     <ImageBackground
@@ -29,6 +50,7 @@ function SignInScreen({navigation}) {
             </Heading>
           </Box>
           <Input
+            onChangeText={(text)=>setemail(text)}
             my={2}
             InputLeftElement={
               <Icon
@@ -53,6 +75,7 @@ function SignInScreen({navigation}) {
           />
 
           <Input
+           onChangeText={(text)=>setpassword(text)}
             my={2}
             InputLeftElement={
               <Icon
@@ -87,12 +110,13 @@ function SignInScreen({navigation}) {
             }}
           />
 
-          <Button my={3} size="md" colorScheme="emerald" width="90%">
+          <Button onPress={()=>attemptSignIn()} my={3} size="md" colorScheme="emerald" width="90%">
             SIGN IN
           </Button>
           <Divider my={2} />
 
-          <TouchableOpacity onPress={()=>navigation.navigate('Forget Password')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Forget Password')}>
             <Text py={1}>Forget Your Password?</Text>
           </TouchableOpacity>
 
