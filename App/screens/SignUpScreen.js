@@ -10,8 +10,7 @@ import {
   Icon,
   Divider,
 } from 'native-base';
-import {ImageBackground, StyleSheet} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {ImageBackground, TouchableOpacity, StyleSheet} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import auth from '@react-native-firebase/auth';
 
@@ -25,7 +24,7 @@ function SignUpScreen({navigation}) {
     auth()
   .createUserWithEmailAndPassword(email, password)
   .then(() => {
-    navigation.navigate('Home')
+    navigation.navigate('AppScreen')
   })
   .catch(error => {
     if (error.code === 'auth/email-already-in-use') {

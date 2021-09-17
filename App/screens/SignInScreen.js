@@ -10,9 +10,8 @@ import {
   Icon,
   Divider,
 } from 'native-base';
-import {ImageBackground, StyleSheet} from 'react-native';
+import {ImageBackground, StyleSheet,TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 function SignInScreen({navigation}) {
   const [show, setShow] = useState(false);

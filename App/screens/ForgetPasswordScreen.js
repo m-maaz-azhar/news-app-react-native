@@ -10,8 +10,7 @@ import {
   Icon,
   Divider,
 } from 'native-base';
-import {ImageBackground, StyleSheet} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {ImageBackground, StyleSheet,TouchableOpacity} from 'react-native';
 
 function ForgetPasswordScreen({navigation}) {
   return (
