@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -13,11 +13,11 @@ import {
   HStack,
   Stack,
   NativeBaseProvider,
+  Button,
 } from 'native-base';
 import moment from 'moment';
 
-function NewsCard({title, description, published_at, author,category, image}) {
-
+function NewsCard({title, description, published_at, author, category, image}) {
   function shortDescription(str, n) {
     return str.length > n ? str.substr(0, n - 1) + '....' : str;
   }
@@ -56,6 +56,26 @@ function NewsCard({title, description, published_at, author,category, image}) {
           py={1}>
           {category.toUpperCase()}
         </Center>
+        <Center
+          p={1}
+          rounded="full"
+          bg="gray.100"
+          boxSize={10}
+          position="absolute"
+          right={0}
+          m={2}
+          _text={{
+            color: 'white',
+            textAlign: 'center',
+            fontWeight: '700',
+            fontSize: 'lg',
+          }}>
+            <Ionicons
+              size={30}
+              name='heart-outline'
+              color='red'
+            />
+        </Center>
       </Box>
       <Stack p={4} space={2}>
         <Stack space={2}>
@@ -75,7 +95,7 @@ function NewsCard({title, description, published_at, author,category, image}) {
             mt={-1}>
             {author}
           </Heading>
-        </Stack> 
+        </Stack>
         <Text lineHeight={6} fontWeight={400}>
           {shortDescription(description, 100)}
         </Text>
@@ -87,7 +107,7 @@ function NewsCard({title, description, published_at, author,category, image}) {
               size="sm"
             />
             <Text ml={1} color="gray.500" fontWeight="500">
-              {moment(published_at).format("MMM Do YY")}
+              {moment(published_at).format('MMM Do YY')}
             </Text>
           </HStack>
         </HStack>

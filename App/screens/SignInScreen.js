@@ -19,6 +19,8 @@ function SignInScreen({navigation}) {
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
 
+  const [validationError, setValidationError] = useState('')
+
   const attemptSignIn = () => {
     auth()
       .signInWithEmailAndPassword(email, password)
@@ -26,10 +28,15 @@ function SignInScreen({navigation}) {
         console.log('Sign In Done',res);
       })
       .catch(error => {
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
+        if (error.code === 'auth/user-not-found') {
+          console.log('Sorry, you are not registered');
+          setValidationError("Sorry, you are not registered");
+        } else if (error.code === 'auth/wrong-password'){
+          console.log('Sorry, you are not registered');
+          setValidationError("Email and Password doesn't match");
         }
-        console.error(error);
+
+        console.log(error);
       });
   };
 
@@ -105,7 +112,7 @@ function SignInScreen({navigation}) {
               placeholderTextColor: 'blueGray.50',
             }}
           />
-
+          <Text style={{color:"red"}}>{validationError}</Text>
           <Button
             onPress={() => attemptSignIn()}
             my={3}
