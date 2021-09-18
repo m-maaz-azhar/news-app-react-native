@@ -4,6 +4,7 @@ import {Heading, Box, Text, Button, Divider,HStack,Spinner} from 'native-base';
 import {getUser} from '../store/actions';
 import {useSelector, useDispatch} from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 function ProfileScreen({navigation}) {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ function ProfileScreen({navigation}) {
               flexDirection={'row'}
               alignItems={'center'}
               justifyContent={'space-between'}>
-              <MaterialCommunityIcons name="location-enter" color="#10b981" size={40} />
+              <Entypo name="location-pin" color="#10b981" size={40} />
               <Text>{state.user.address}</Text>
             </View>
             <Divider />
