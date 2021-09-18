@@ -19,6 +19,9 @@ function SignUpScreen({navigation}) {
   const [name, setname] = useState('');
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
+  const [address, setaddress] = useState('');
+  const [creditCardNo, setCreditCardNo] = useState('')
+  const [cardCvv, setCardCvv] = useState('')
 
   const attemptSignUp = () => {
     auth()
@@ -30,6 +33,9 @@ function SignUpScreen({navigation}) {
           .set({
             name,
             email,
+            address,
+            creditCardNo,
+            cardCvv,
           })
           .then(() => console.log('Data set.'));
       })
@@ -58,6 +64,10 @@ function SignUpScreen({navigation}) {
               SIGN UP
             </Heading>
           </Box>
+
+          <Divider my={2}/>
+            <Heading size="sm" color="emerald.500">PERSONAL DETAILS</Heading>
+          <Divider my={2}/>
 
           <Input
             onChangeText={text => setname(text)}
@@ -126,6 +136,83 @@ function SignUpScreen({navigation}) {
               />
             }
             placeholder="Password" // mx={4}
+            _light={{
+              placeholderTextColor: 'blueGray.400',
+            }}
+            _dark={{
+              placeholderTextColor: 'blueGray.50',
+            }}
+          />
+
+          <Input
+            onChangeText={text => setaddress(text)}
+            my={2}
+            InputLeftElement={
+              <Icon
+                as={<MaterialCommunityIcons name="location-enter" />}
+                size="md"
+                m={2}
+                _light={{
+                  color: 'emerald.500',
+                }}
+                _dark={{
+                  color: 'gray.300',
+                }}
+              />
+            }
+            placeholder="Address" // mx={4}
+            _light={{
+              placeholderTextColor: 'blueGray.400',
+            }}
+            _dark={{
+              placeholderTextColor: 'blueGray.50',
+            }}
+          />
+          <Divider my={2}/>
+            <Heading size="sm" color="emerald.500">PAYMENT DETAILS</Heading>
+          <Divider my={2}/>
+          <Input
+            onChangeText={text => setCreditCardNo(text)}
+            my={2}
+            InputLeftElement={
+              <Icon
+                as={<MaterialCommunityIcons name="credit-card" />}
+                size="md"
+                m={2}
+                _light={{
+                  color: 'emerald.500',
+                }}
+                _dark={{
+                  color: 'gray.300',
+                }}
+              />
+            }
+            placeholder="CARD NUMBER" // mx={4}
+            _light={{
+              placeholderTextColor: 'blueGray.400',
+            }}
+            _dark={{
+              placeholderTextColor: 'blueGray.50',
+            }}
+          />
+
+          <Input
+            onChangeText={text => setCardCvv(text)}
+            my={2}
+            InputLeftElement={
+              <Icon
+                as={<MaterialCommunityIcons name="barcode" />}
+                size="md"
+                m={2}
+                _light={{
+                  color: 'emerald.500',
+                }}
+                _dark={{
+                  color: 'gray.300',
+                }}
+              />
+            }
+            placeholder="CARD CVV" // mx={4}
             _light={{
               placeholderTextColor: 'blueGray.400',
             }}

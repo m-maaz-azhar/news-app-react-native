@@ -60,7 +60,7 @@ function LandingScreen({navigation}) {
           }}
           mb={5}
           size="xl">
-          APP NAME
+          NEWS APP
         </Heading>
       </Box>
       <Box
